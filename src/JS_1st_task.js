@@ -193,13 +193,7 @@ function order(arr) {
 	и возвращает другой без чисел которые меньше 0
 	*/
 function removeNegative(arr) {
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] < 0) {
-      arr.splice(i, 1);
-      i--;
-    }
-  }
-  return arr;
+  return arr.filter((item) => (item >= 0));
 };
 
 /*
@@ -209,11 +203,5 @@ function removeNegative(arr) {
 	[1,2,3], [1, 3] => [2]
 	*/
 function without(arrA, arrB) {
-  for (var i = 0; i < arrA.length; i++) {
-    if (arrB.indexOf(arrA[i]) !== -1) {
-      arrA.splice(i, 1);
-      i--;
-    }
-  }
-  return arrA;
+  return arrA.filter(itemA => !arrB.includes(itemA));
 };
