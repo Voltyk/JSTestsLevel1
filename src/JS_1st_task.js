@@ -164,7 +164,6 @@
 	или строку разделенную "-" если не задан
 	*/
 	function join (array, separator) {
-		var k=0;
 		if (separator==undefined || typeof separator!=='string' || separator==="") separator="-";
 		return array.join(separator);
 	};
