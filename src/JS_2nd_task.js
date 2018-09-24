@@ -10,7 +10,7 @@ function extractCharacters(str){
 }
 
 // extractCharacters('abcd');
-<<<<<<< HEAD
+
     //['a', 'b', 'c', 'd']
 
 // extractCharacters('aaaabc');
@@ -45,4 +45,3 @@ myLogger('My data is -', { data: 1 });
 //     //['a', 'b', 'c']
 // extractCharacters('Hello, world');
 //     //[ 'h', 'e', 'l', 'o', ',', ' ', 'w', 'r', 'd' ];
->>>>>>> 765a0745997fa75e0b64b8be3a335f36818258a9
