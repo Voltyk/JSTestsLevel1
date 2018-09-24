@@ -3,13 +3,16 @@
 // нужна, строчные и заглавные буквы - 1 символ.
 
 function extractCharacters(str){
-    //...
+    str=str.toLowerCase();
+    var arr=Array.from(str);
+    var arrCleaned=arr.filter( (item,index) => (arr.indexOf(item)===index) );
+    return arrCleaned;
 }
 
-extractCharacters('abcd');
-    //['a', 'b', 'c', 'd']
-
-extractCharacters('aaaabc');
-    //['a', 'b', 'c']
-extractCharacters('Hello, world');
-    //[ 'h', 'e', 'l', 'o', ',', ' ', 'w', 'r', 'd' ];
+// extractCharacters('abcd');
+//     //['a', 'b', 'c', 'd']
+//
+// extractCharacters('aaaabc');
+//     //['a', 'b', 'c']
+// extractCharacters('Hello, world');
+//     //[ 'h', 'e', 'l', 'o', ',', ' ', 'w', 'r', 'd' ];
