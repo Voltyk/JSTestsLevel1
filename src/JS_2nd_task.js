@@ -23,6 +23,9 @@ function extractCharacters(str){
 // 2. Напишите функцию, которая будет возвращать новую функцию, с помощью
 // которой можно будет выводить в консоль текстовую информацию.
 function createLogger(prefix) {
+
+//-------let's make an object which contains toString method according to our task-------
+
   var additionalMethods = {
     toString: function() {
       let str = 'Object {';
@@ -35,6 +38,8 @@ function createLogger(prefix) {
       return str;
     }
   }
+//----------------------------------------------------------------------------------------
+
   return function() {
     var logDate = new Date(Date.now()).toISOString();
     var str="";
@@ -51,6 +56,8 @@ function createLogger(prefix) {
 
 var myLogger = createLogger('My Logger');
 
+//-------Master whant me to make real log time or when "myLogger" was created?------
+//-------Because in example below we can see the equal time of every log.-------
 
 myLogger('some data');
     // 2016-06-06T09:55:44.162Z My Logger: some data
