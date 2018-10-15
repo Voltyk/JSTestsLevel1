@@ -32,28 +32,6 @@ obj2={
 compareObjects(obj1,obj2,"cash");
 
 
-// Создайте коллекцию из 5 музыкальных песен, где
-// каждая песня содержит следующую информацию:
-// played - количество раз песня была проиграна
-// (определить случайным образом), name - имя песни
-
-// function Song(name, played){
-//   this.name=name;
-//   this.played=played;
-// }
-//
-// let songsCollection[];
-// songsCollection.push(new Song("Like a Stone",Math.floor(Math.random()*1001));
-// songsCollection.push(new Song("Scar On The Sky",Math.floor(Math.random()*1001)));
-// songsCollection.push(new Song("Before We Disappear",Math.floor(Math.random()*1001)));
-// songsCollection.push(new Song("Can't Change Me",Math.floor(Math.random()*1001)));
-// songsCollection.push(new Song("The Promise",Math.floor(Math.random()*1001)));
-//
-// // Напишите функцию favoriteSong, которая принимает коллекцию
-// // из песен, и возвращает следующую информацию: название песни,
-// // сколько раз песня была проиграна, индекс песни в коллекции.
-
-
 // Create object Car with the method `drive` and the property `mileage`
 // Method `drive` accepts distance as a parameter and logs to console `The car has driven ${distance} miles`
 // Property `mileage` has a getter that returns total mileage after several calls of `drive`
