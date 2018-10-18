@@ -196,3 +196,42 @@ class Game {
 
 }
 Game.maxMonsters = 2;
+
+var heroBlock=document.getElementById('heroName');
+//var herClassInput=document.getElementById('heroCharClasses');
+var heroClassLabel = document.createElement('p');
+heroClassLabel.innerHTML='Hero class';
+heroBlock.appendChild(heroClassLabel);
+var heroClassesSelect=document.createElement("select");
+
+
+var heroOption;
+
+heroClassesSelect=document.createElement("select");
+for (var variable in Hero.heroClasses ) {
+  if (Hero.heroClasses.hasOwnProperty(variable)) {
+    heroOption=document.createElement('option');
+    heroOption.innerHTML=Hero.heroClasses[variable].charClass;
+    heroClassesSelect.appendChild(heroOption);
+  }
+}
+heroBlock.appendChild(heroClassesSelect);
+
+
+var monstersBlock=document.getElementById('monsters');
+//var herClassInput=document.getElementById('monserCharClasses');
+var monstClassesSelect;
+var monstOption;
+for(let i=0;i<Game.maxMonsters;i++){
+monstClassesSelect=document.createElement("select");
+for (var variable in Monster.monsterClasses ) {
+  if (Monster.monsterClasses.hasOwnProperty(variable)) {
+    monstOption=document.createElement('option');
+    monstOption.innerHTML=Monster.monsterClasses[variable].charClass;
+    monstClassesSelect.appendChild(monstOption);
+  }
+}
+monstersBlock.appendChild(monstClassesSelect);
+}
+
+document.getElementById('jsFail').style.display='none';
