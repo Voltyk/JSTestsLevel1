@@ -7,16 +7,23 @@
   <body>
     <main>
       <h1>Hero Against Monsters RPG Game</h1>
-      <p id="jsFail">Java Script was not finish</p>
+      <p id="jsFail">Java Script was not finished</p>
       <div class="game-interface">
-        <div class="hero-set" id="heroName">
+        <div class="hero-set" id="hero">
           <p>Hero's name</p>
-          <input type="text" id="inputHeroName" value="">
+          <input type="text" id="heroNameInput" value="">
+          <p>Hero's class</p>
+          <button type="button" id="heroCreateButton">Create Hero</button>
         </div>
-        <div class="monster-set" id="monsters">
-          <p>Pick monsters here</p>
+        <div class="monster-set" id="monster">
+          <p>Pick monster here</p>
+          <button type="button" id="monsterCreateButton">Create Monster</button>
         </div>
-        <button type="button" name="button">Start</button>
+        <button type="button" id="startButton">Start</button>
+        <select class="alive-monsters" id="aliveMonstersSelect" style="display:none"></select>
+        <button type="button" id="attackButton" style="display:none">Attack Monster</button>
+        <p>Game console</p>
+        <textarea id="gameConsole" readonly rows="8" cols="80"></textarea>
       </div>
 
     </main>
