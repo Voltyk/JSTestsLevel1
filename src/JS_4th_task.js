@@ -14,16 +14,16 @@ class Character {
   constructor() {
 
   }
-  getName(){
+  getName() {
     return this.name;
   }
-  getCharClass(){
+  getCharClass() {
     return this.charClass;
   }
-  attack(target){
+  attack(target) {
     if ((target instanceof Hero) || (target instanceof Monster)) {
-      target.life-=this.damage;
-      if (target.life<=0) {
+      target.life -= this.damage;
+      if (target.life <= 0) {
         return `${target.charClass} killed`
       } else {
         return `done ${this.damage} damage to ${target.charClass}`
@@ -49,21 +49,21 @@ class Character {
 // .attack(target)
 
 class Hero extends Character {
-  constructor(name,className) {
+  constructor(name, className) {
     super();
-    this.name=name;
-    this.className=className;
+    this.name = name;
+    this.className = className;
   }
-  get className(){
+  get className() {
     return this.charClass;
   }
-  set className(value){
-    this.charClass='Incorrect character class provided';
-    for(var prop in Hero.heroClasses){
-      if (Hero.heroClasses[prop]['charClass']===value) {
-        this.charClass=Hero.heroClasses[prop]['charClass'];
-        this.life=Hero.heroClasses[prop]['life'];
-        this.damage=Hero.heroClasses[prop]['damage'];
+  set className(value) {
+    this.charClass = 'Incorrect character class provided';
+    for (var prop in Hero.heroClasses) {
+      if (Hero.heroClasses[prop]['charClass'] === value) {
+        this.charClass = Hero.heroClasses[prop]['charClass'];
+        this.life = Hero.heroClasses[prop]['life'];
+        this.damage = Hero.heroClasses[prop]['damage'];
         break;
       }
     }
@@ -73,31 +73,31 @@ class Hero extends Character {
   // returns:
   //         "I will attack only monsters" - in not monster was passed as target
   //         "Hero attacked, " + GENERAL_ATTACK_MESSAGE
-  attack(target){
-    if(!(target instanceof Monster)){
+  attack(target) {
+    if (!(target instanceof Monster)) {
       return 'I will attack only monsters';
-    }else {
-      let msg=Character.prototype.attack.call(this,target);
+    } else {
+      let msg = Character.prototype.attack.call(this, target);
       return `Hero attacked, ${msg}`;
     }
   }
 }
 Hero.heroClasses = {
-	warrior: {
-		charClass: "Warrior",
-		life: 30,
-		damage: 4
-	},
-	rogue: {
-		charClass: "Rogue",
-		life: 25,
-		damage: 3
-	},
-	sorcerer: {
-		charClass: "Sorcerer",
-		life: 20,
-		damage: 5
-	}
+  warrior: {
+    charClass: "Warrior",
+    life: 30,
+    damage: 4
+  },
+  rogue: {
+    charClass: "Rogue",
+    life: 25,
+    damage: 3
+  },
+  sorcerer: {
+    charClass: "Sorcerer",
+    life: 20,
+    damage: 5
+  }
 }
 
 
@@ -117,19 +117,19 @@ Hero.heroClasses = {
 class Monster extends Character {
   constructor(monsterClass) {
     super();
-    this.name=`I am ${this.monsterClass} I don't have name`;
-    this.monsterClass=monsterClass;
+    this.name = `I am ${this.monsterClass} I don't have name`;
+    this.monsterClass = monsterClass;
   }
-  get monsterClass(){
+  get monsterClass() {
     return this.charClass;
   }
-  set monsterClass(value){
-    this.charClass='Incorrect character class provided';
-    for(var prop in Monster.monsterClasses){
-      if (Monster.monsterClasses[prop]['charClass']===value) {
-        this.charClass=Monster.monsterClasses[prop]['charClass'];
-        this.life=Monster.monsterClasses[prop]['life'];
-        this.damage=Monster.monsterClasses[prop]['damage'];
+  set monsterClass(value) {
+    this.charClass = 'Incorrect character class provided';
+    for (var prop in Monster.monsterClasses) {
+      if (Monster.monsterClasses[prop]['charClass'] === value) {
+        this.charClass = Monster.monsterClasses[prop]['charClass'];
+        this.life = Monster.monsterClasses[prop]['life'];
+        this.damage = Monster.monsterClasses[prop]['damage'];
         break;
       }
     }
@@ -139,161 +139,161 @@ class Monster extends Character {
   // returns:
   //         "I will attack only Hero" - in not hero was passed as target
   //         "Monster attacked, " + GENERAL_ATTACK_MESSAGE
-  attack(target){
-    if(!(target instanceof Hero)){
+  attack(target) {
+    if (!(target instanceof Hero)) {
       return 'I will attack only heroes';
 
-    }else {
-      let msg=Character.prototype.attack.call(this,target);
+    } else {
+      let msg = Character.prototype.attack.call(this, target);
       return `Monster attacked, ${msg}`;
     }
   }
 }
 Monster.monsterClasses = {
-	zombie: {
-		charClass: "Zombie",
-		life: 8,
-		damage: 4
-	},
-	skeleton: {
-		charClass: "Skeleton",
-		life: 10,
-		damage: 6
-	},
-	holem: {
-		charClass: "Holem",
-		life: 15,
-		damage: 6
-	}
+  zombie: {
+    charClass: "Zombie",
+    life: 8,
+    damage: 4
+  },
+  skeleton: {
+    charClass: "Skeleton",
+    life: 10,
+    damage: 6
+  },
+  holem: {
+    charClass: "Holem",
+    life: 15,
+    damage: 6
+  }
 }
 class Game {
-  constructor(status='Idle',hero,monsters=[]) {
-    this.status=status;
-    this.hero=hero;
-    this.monsters=monsters;
+  constructor(status = 'Idle', hero, monsters = []) {
+    this.status = status;
+    this.hero = hero;
+    this.monsters = monsters;
   }
 
-// Change game status from "Idle" to "In progress", should be possible only if hero and monsters are defined
-// returns:
-//     "Your journey has started, fight monsters" - if ok
-// throw new Error(
-//     "Cannot start journey, populate the world with hero and monsters first") - if smth went wrong
-  beginJourney(){
-    if (typeof this.hero==='undefined' || this.monsters.length===0) {
+  // Change game status from "Idle" to "In progress", should be possible only if hero and monsters are defined
+  // returns:
+  //     "Your journey has started, fight monsters" - if ok
+  // throw new Error(
+  //     "Cannot start journey, populate the world with hero and monsters first") - if smth went wrong
+  beginJourney() {
+    if (typeof this.hero === 'undefined' || this.monsters.length === 0) {
       return 'Cannot start journey, populate the world with hero and monsters first';
     } else {
-      this.status='In progress'
+      this.status = 'In progress'
       return 'Your journey has started, fight monsters';
     }
   }
 
-// Change game status from "In progress" to "Finished", possible only if hero or both monsters are dead(their life equals 0)
-// retures:
-//        "The Game is finished. Monstrs are dead. Congratulations" - if both monsters are dead
-//        "The Game is finished. Hero is dead :(" - if hero is dead
-//        "Don`t stop. Some monsters are still alive. Kill`em all" - if its not time yet
-  finishJourney(){
-    let monstsAlive=this.monsters.some((item)=>(item['life']>0))
-    if (this.hero.life<=0 || !monstsAlive) {
-      this.status='Finished';
+  // Change game status from "In progress" to "Finished", possible only if hero or both monsters are dead(their life equals 0)
+  // retures:
+  //        "The Game is finished. Monstrs are dead. Congratulations" - if both monsters are dead
+  //        "The Game is finished. Hero is dead :(" - if hero is dead
+  //        "Don`t stop. Some monsters are still alive. Kill`em all" - if its not time yet
+  finishJourney() {
+    let monstsAlive = this.monsters.some((item) => (item['life'] > 0))
+    if (this.hero.life <= 0 || !monstsAlive) {
+      this.status = 'Finished';
       if (!monstsAlive) {
         return 'The Game is finished. Monsters are dead. Congratulations';
       }
-      if (this.hero.life<=0) {
-        return'The Game is finished. Hero is dead :(';
+      if (this.hero.life <= 0) {
+        return 'The Game is finished. Hero is dead :(';
       }
-    }else {
+    } else {
       return 'Don`t stop. Some monsters are still alive. Kill`em all';
     }
   }
 
-// set game.hero to hero instance
-// accepts: instance of Hero class
-// throw:
-//        "Only one hero can exist" - if hero is already defined
-//        "Only hero instance can be hero" - if not hero was passed to function
-// returns:
-//        "Hero created, welcome HERO_NAME" - if ok
-  addHero(hero){
+  // set game.hero to hero instance
+  // accepts: instance of Hero class
+  // throw:
+  //        "Only one hero can exist" - if hero is already defined
+  //        "Only hero instance can be hero" - if not hero was passed to function
+  // returns:
+  //        "Hero created, welcome HERO_NAME" - if ok
+  addHero(hero) {
     if (!(hero instanceof Hero)) {
       return 'Only hero instance can be hero';
     } else if (this.hero instanceof Hero) {
-      return'Only one hero can exist';
-    }else {
-      this.hero=hero;
+      return 'Only one hero can exist';
+    } else {
+      this.hero = hero;
       return `Hero ${this.hero.getCharClass()} created, welcome ${this.hero.getName()}`;
     }
 
 
   }
 
-// adds monster to game.monsters array
-// accepts: instance of Monster class
-// throw:
-//        "Only 2 monsters can exist" - if there are already 2 monsters defined
-//        "Only monster Instances can become monsters" - if not monster was passed to function
-// returns:
-//        "Monster Created, MONSTER_CHARACTER_CLASS appeared in the world" - if ok
-  addMonster(monster){
+  // adds monster to game.monsters array
+  // accepts: instance of Monster class
+  // throw:
+  //        "Only 2 monsters can exist" - if there are already 2 monsters defined
+  //        "Only monster Instances can become monsters" - if not monster was passed to function
+  // returns:
+  //        "Monster Created, MONSTER_CHARACTER_CLASS appeared in the world" - if ok
+  addMonster(monster) {
     if (!(monster instanceof Monster)) {
       return 'Only monster Instances can become monsters';
-    } else if (this.monsters.length>=Game.maxMonsters) {
-      return 'Only '+ Game.maxMonsters +' monsters can exist';
-    }else {
-      if (this.monsters.some((item)=>(item===monster))) {
+    } else if (this.monsters.length >= Game.maxMonsters) {
+      return 'Only ' + Game.maxMonsters + ' monsters can exist';
+    } else {
+      if (this.monsters.some((item) => (item === monster))) {
         return 'This monster already exists. Add another monster instance';
       } else {
         this.monsters.push(monster);
-        return`Monster Created, ${monster.charClass} appeared in the world`;
+        return `Monster Created, ${monster.charClass} appeared in the world`;
       }
     }
   }
 
-// Initiate a battle between hero and monster, one after another, they should attack each other, starting from hero,
-// and until someone life is not 0
-// returns string 'Hero win' or 'Monster win', depending on who has life points left
-  fight(monsterIndex){
-    var msg='';
-    var heroAttaks=true;
+  // Initiate a battle between hero and monster, one after another, they should attack each other, starting from hero,
+  // and until someone life is not 0
+  // returns string 'Hero win' or 'Monster win', depending on who has life points left
+  fight(monsterIndex) {
+    var msg = '';
+    var heroAttaks = true;
     //function which make 1 sec delay for 1 fight action to make fight more real
-    (function msgDelay(obj){
-      setTimeout(function(){
+    (function msgDelay(obj) {
+      setTimeout(function() {
         if (heroAttaks) {
           addConsoleMessage(obj.hero.attack(obj.monsters[monsterIndex]));
-          heroAttaks=false;
-        }else {
+          heroAttaks = false;
+        } else {
           addConsoleMessage(obj.monsters[monsterIndex].attack(obj.hero));
-          heroAttaks=true;
+          heroAttaks = true;
         }
-        if (obj.monsters[monsterIndex].life<=0) {
-          msg='Hero win';
+        if (obj.monsters[monsterIndex].life <= 0) {
+          msg = 'Hero win';
         }
-        if (obj.hero.life<=0) {
-          msg='Monster win'
+        if (obj.hero.life <= 0) {
+          msg = 'Monster win'
         }
-        if (msg==='') {
+        if (msg === '') {
           msgDelay(obj);
-        }else{
+        } else {
           addConsoleMessage(obj.finishJourney());
-          htmlElements.aliveMonstersSelect.options[htmlElements.aliveMonstersSelect.selectedIndex].disabled=true;
-          htmlElements.aliveMonstersSelect.innerHTML=htmlElements.aliveMonstersSelect.innerHTML;
+          htmlElements.aliveMonstersSelect.options[htmlElements.aliveMonstersSelect.selectedIndex].disabled = true;
+          htmlElements.aliveMonstersSelect.innerHTML = htmlElements.aliveMonstersSelect.innerHTML;
           //clear game characters from html elements and game object after game was finished
-          if (obj.status==='Finished') {
-            htmlElements.aliveMonstersSelect.style.display='none';
-            htmlElements.attackButton.style.display='none';
-            htmlElements.heroCreateButton.disabled=false;
-            htmlElements.monsterCreateButton.disabled=false;
-            htmlElements.startButton.disabled=false;
+          if (obj.status === 'Finished') {
+            htmlElements.aliveMonstersSelect.style.display = 'none';
+            htmlElements.attackButton.style.display = 'none';
+            htmlElements.heroCreateButton.disabled = false;
+            htmlElements.monsterCreateButton.disabled = false;
+            htmlElements.startButton.disabled = false;
             delete obj.hero;
             delete obj.monsters;
-            obj.monsters=[];
+            obj.monsters = [];
 
 
             addConsoleMessage('Start new game!');
 
           }
         }
-      },1000);
+      }, 1000);
     })(this);
     return msg;
     /*
@@ -319,7 +319,7 @@ class Game {
 Game.maxMonsters = 2;
 
 // creating object which contains all the objects-tags which will be manipulated by code below
-var htmlElements={
+var htmlElements = {
   //existing tags
   heroDiv: document.getElementById('hero'),
   heroName: document.getElementById('heroNameInput'),
@@ -336,81 +336,81 @@ var htmlElements={
 
 };
 //fill dropdown list of possible hero's classes
-htmlElements.heroDiv.insertBefore(htmlElements.heroClassesSelect,htmlElements.heroCreateButton);
+htmlElements.heroDiv.insertBefore(htmlElements.heroClassesSelect, htmlElements.heroCreateButton);
 var heroOption;
-for (var variable in Hero.heroClasses ) {
+for (var variable in Hero.heroClasses) {
   if (Hero.heroClasses.hasOwnProperty(variable)) {
-    heroOption=document.createElement('option');
-    heroOption.innerHTML=Hero.heroClasses[variable].charClass;
+    heroOption = document.createElement('option');
+    heroOption.innerHTML = Hero.heroClasses[variable].charClass;
     htmlElements.heroClassesSelect.appendChild(heroOption);
   }
 }
 
 //fill dropdown list of possible monster's classes
-htmlElements.monsterDiv.insertBefore(htmlElements.monstClassesSelect,htmlElements.monsterCreateButton);
+htmlElements.monsterDiv.insertBefore(htmlElements.monstClassesSelect, htmlElements.monsterCreateButton);
 var monstOption;
-for (var variable in Monster.monsterClasses ) {
+for (var variable in Monster.monsterClasses) {
   if (Monster.monsterClasses.hasOwnProperty(variable)) {
-    monstOption=document.createElement('option');
-    monstOption.innerHTML=Monster.monsterClasses[variable].charClass;
+    monstOption = document.createElement('option');
+    monstOption.innerHTML = Monster.monsterClasses[variable].charClass;
     htmlElements.monstClassesSelect.appendChild(monstOption);
   }
 }
 var hero;
 var monster;
-var game=new Game;
+var game = new Game;
 
 //function to log in game console (html textarea)
-var addConsoleMessage=function(text){
-  let gameConsole=htmlElements.gameConsole;
-  gameConsole.value+= text+'\r\n';
+var addConsoleMessage = function(text) {
+  let gameConsole = htmlElements.gameConsole;
+  gameConsole.value += text + '\r\n';
   //gameConsole.focus();
-  gameConsole.scrollTop=gameConsole.scrollHeight;
+  gameConsole.scrollTop = gameConsole.scrollHeight;
 }
 
 //add new instance of Hero on  button Click
-htmlElements.heroCreateButton.onclick=function(){
-  let heroName=htmlElements.heroName.value;
-  if(heroName===''){
-    heroName='Noname Hero';
+htmlElements.heroCreateButton.onclick = function() {
+  let heroName = htmlElements.heroName.value;
+  if (heroName === '') {
+    heroName = 'Noname Hero';
   }
-  hero=new Hero(heroName,htmlElements.heroClassesSelect.value);
+  hero = new Hero(heroName, htmlElements.heroClassesSelect.value);
   addConsoleMessage(game.addHero(hero));
 }
 //add new instance of Monster on  button Click
-htmlElements.monsterCreateButton.onclick=function(){
-  monster=new Monster(htmlElements.monstClassesSelect.value);
+htmlElements.monsterCreateButton.onclick = function() {
+  monster = new Monster(htmlElements.monstClassesSelect.value);
   addConsoleMessage(game.addMonster(monster));
 }
 //start the game on  button Click, add dropdown list of monsters which were added to the game
 //add button Attack Monster to attack selected monster
-htmlElements.startButton.onclick=function(){
+htmlElements.startButton.onclick = function() {
   addConsoleMessage(game.beginJourney());
 
-  if (game.status==='In progress') {
+  if (game.status === 'In progress') {
     //disable buttons and clear added monsters list before it will be filled
-    htmlElements.heroCreateButton.disabled=true;
-    htmlElements.monsterCreateButton.disabled=true;
-    htmlElements.startButton.disabled=true;
+    htmlElements.heroCreateButton.disabled = true;
+    htmlElements.monsterCreateButton.disabled = true;
+    htmlElements.startButton.disabled = true;
     while (htmlElements.aliveMonstersSelect.firstChild) {
-    htmlElements.aliveMonstersSelect.removeChild(htmlElements.aliveMonstersSelect.firstChild);
+      htmlElements.aliveMonstersSelect.removeChild(htmlElements.aliveMonstersSelect.firstChild);
     }
     //fill monsters to fight dropdown list with game monsters
     var aliveMonster;
-    game.monsters.forEach(function(item){
-      aliveMonster=document.createElement('option');
-      aliveMonster.innerHTML= item['charClass'];
+    game.monsters.forEach(function(item) {
+      aliveMonster = document.createElement('option');
+      aliveMonster.innerHTML = item['charClass'];
       htmlElements.aliveMonstersSelect.appendChild(aliveMonster);
     });
     //begin to show elements for fighting
-    htmlElements.aliveMonstersSelect.style.display='inherit';
-    htmlElements.attackButton.style.display='inherit';
+    htmlElements.aliveMonstersSelect.style.display = 'inherit';
+    htmlElements.attackButton.style.display = 'inherit';
   }
 
 }
 //run fight method of game
-htmlElements.attackButton.onclick=function(){
+htmlElements.attackButton.onclick = function() {
   addConsoleMessage(game.fight(htmlElements.aliveMonstersSelect.selectedIndex));
 }
 //remove js problem message from page
-document.getElementById('jsFail').style.display='none';
+document.getElementById('jsFail').style.display = 'none';
